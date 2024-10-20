@@ -1,42 +1,57 @@
 ---
 import { Picture } from "astro:assets";
-import newstitle from "../../../../images/news/news-1/news1_title.jpg";
+import type { ImageMetadata } from "astro";
+
+interface Images {
+    id: string;
+    imagePath: string;
+    description: string;
+}
+
+interface Content {
+    title: string;
+    annotation: string;
+    pubDate: string;
+    pubTime: string;
+}
+
+const { id, imagePath, description } = Astro.props as Images;
+const { title, annotation, pubDate, pubTime } = Astro.props as Content;
+const linkPage = `/post${id}`;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("../../Posts/*.{jpeg,jpg,png,gif}",);
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "../../Posts/*.{jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
+  );
 
 ---
+
 <li class="news-item">
     <header class="item-header">
         <Picture
         class="item-header__img"
-        src={newstitle} 
+        src={images[imagePath]()}
         formats={["avif", "webp", "jpeg" ]} 
-        widths={[320, 530, 960, newstitle.width]}
+        widths={[320, 530, 960, 1920]}
         sizes={`(max-width: 390px) 320px,
                 (max-width: 576px) 530px,
                 (max-width: 992px) 960px,
-                (min-width: 1200px) ${newstitle.width}px`}
-        width={530}
-        height={414}        
-        alt="newstitle" />
+                (min-width: 1200px) 1920px`}
+        width={570}
+        height={445}        
+        alt={description} />
     </header>
     <article class="item-content">
-        <section class="item-content__right">
+        <section class="item-content__right font-size-h3 font-Yanone">
             <h3 class="font-size-h3 font-Yanone news-title">
-                <a class="line-clamp news-title__link " href="">
-                    это водный животный организм это водный животный организм это водный животный организм это водный
-                    животный организм это водный животный организм
-                </a>
+                <a class="line-clamp news-title__link" href={linkPage}> {title} </a>
             </h3>
-            <p class="item-content-text line-clamp">
-                Рыба - это водный животный организм, который обитает в пресноводных и морских водоемах. Она является
-                одним из самых распространенных видов животных на Земле и имеет огромное значение для экосистемы и
-                человечества. Рыбы разнообразны по форме, размеру и цвету. Они могут быть мелкими и крупными, окрашены в
-                различные оттенки и иметь разнообразные формы тела. Некоторые виды рыб обладают уникальными адаптациями,
-                позволяющими им выживать в различных условиях среды.
-            </p>
+            <p class="item-content-text line-clamp"> {annotation} </p>
         </section>
         <section class="item-content__left">
             <h5 class="font-size-h5 color_white">News</h5>
-            <time class="data-info_datetime" datetime="2015-09-23 21:13">
+            <time class="data-info_datetime" datetime=`${pubDate} ${pubTime}`>
                 <span class="data-info_date">
                     September 23,
                 </span>
@@ -44,7 +59,7 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
                     2015
                 </span>
                 <p class="data-info_time">
-                    at 21:13
+                    at {pubTime}
                 </p>
             </time>
         </section>
@@ -54,28 +69,30 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
     .news-item {
         --col: 2;
         display: block;
-        max-width: 530px;
-        min-width: 421px;
+        max-width: 570px;
         width: calc((100% / var(--col)) - var(--gap));
+        min-width: 421px;
     }
 
     .item-header {
+        max-width: 100%;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
         border-radius: .375rem;
-        aspect-ratio: 530 / 414;
+        aspect-ratio: 570 / 445;
     }
 
     .item-header__img {
-        width: 100%;
-        aspect-ratio: inherit;
+        max-width: 100%;
         object-fit: cover;
     }
     
 
     .item-content {
+        width: 100%;
         --step-content: 1em;
         display: flex;
         font-family: var(--font-OpenSans);
@@ -84,6 +101,7 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
         letter-spacing: .0088rem;
         line-height: 175%;
         color: var(--color-DarkGray);
+
     }
 
     .item-content__right {
@@ -92,8 +110,12 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
 
     .item-content-text {
         --line: 5;
+        font-family: var(--font-OpenSans);
+        font-size: clamp(0.875rem, 0.44636rem + 0.893vw, 1rem);
+        font-weight: 400;
         font-style: normal;
         text-wrap: balance;
+        color: var(--color-DarkGray);
         margin-top: var(--step-content);
         padding-right: var(--content-right);
     }
@@ -107,15 +129,14 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
     }
 
     .news-title {
-        --step: 2em;
-        --step-pad: calc(var(--step) / 2);
+        height: 2em;
+        padding-top: var(--gap);
+        box-sizing: content-box;
+        margin-top: calc(-1 * (2em + var(--gap)));
+        padding-right: var(--content-right);
         align-content: center;
         background: var(--color-black1);
-        margin-top: calc(-1 * (var(--step) + var(--step-pad)));
-        padding-top: var(--step-pad);
-        padding-right: var(--content-right);
         border-top-right-radius: .375rem;
-
     }
 
     .news-title__link {
@@ -138,7 +159,6 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
 
     @media screen and (max-width: 991.98px) {
         .news-item {
-            --col: 1;
             max-width: 570px;
             width: 100%;
             min-width: 250px;
@@ -146,11 +166,6 @@ import newstitle from "../../../../images/news/news-1/news1_title.jpg";
     }
 
     @media screen and (max-width: 575.98px) {
-        /* .news-item {
-            --col: 1;
-            width: 90%;
-        } */
-        
         .news-title {
             margin-top: 0;
             border-top-right-radius: 0;
