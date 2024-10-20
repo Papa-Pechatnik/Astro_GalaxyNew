@@ -109,16 +109,21 @@ if (nav) {
     .blog-pagination__item_link:hover {
       color: var(--color-Gray);
     }
+    .nav-item__link:is(:hover, :focus) {
+    color: var(--color-Gray);
+  }
   }
 
   @media (hover: none) {
     .blog-pagination__item_link:active {
       color: var(--color-orange);
     }
+    .nav-item__link:active {
+    color: var(--color-orange);
+  }
   }
 
   @media screen and (width < 767.98px) {
-
     .nav-menu {
       position: relative;
     }
