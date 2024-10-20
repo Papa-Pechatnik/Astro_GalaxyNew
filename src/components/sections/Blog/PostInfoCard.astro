@@ -1,0 +1,101 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from 'astro:assets';
+import LinkReadMore from '../../elements/LinkReadMore.astro';
+
+interface Images {
+    id: string;
+    imagePath: string;
+    description: string;
+}
+
+interface Content {
+    title: string;
+    annotation: string;
+}
+
+const { id, imagePath, description } = Astro.props as Images;
+const { title, annotation } = Astro.props as Content;
+const linkPage = `/post${id}`;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("../Posts/*.{jpeg,jpg,png,gif}",);
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "../Posts/*.{jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
+  );
+---
+
+<li class="posts-item-box">
+    <a href={linkPage} class="posts-item-img">
+        <Image class="posts-item-img__img"
+        src={images[imagePath]()}
+        width={370} 
+        height={270} 
+        alt={description} />
+    </a>
+    <div class="posts-item">
+        <h5 class="posts-item__subtitle font-size-h5 color_white">news</h5>
+        <h3 class="posts-item__title">
+            <a class="font-Yanone font-size-h3 color_white posts-item__title_link" href={linkPage}>
+                {title}
+            </a>
+        </h3>
+        <p class="posts-item__text line-clamp">
+            {annotation}
+        </p>
+    </div>
+    <LinkReadMore link={linkPage} />
+</li>
+
+<style>
+    .posts-item-box {
+        width: inherit;
+    }
+
+    .posts-item-img {
+        display: block;
+        aspect-ratio: 370/270;
+        border-radius: .375rem;
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+        cursor: pointer;
+    }
+
+    .posts-item-img__img {
+        aspect-ratio: inherit;
+        object-fit: cover;
+        transition: all 0.75s;
+    }
+
+    .posts-item-img:hover .posts-item-img__img {
+        transform: scale(1.1);
+    }
+
+    .posts-item {
+        --step-content: 1em;
+        width: inherit;
+        margin-bottom: 1.875rem;
+    }
+
+    .posts-item__title {
+        height: 4.375rem;
+    }
+
+    .posts-item__title_link {
+        transition: all 0.75s ease-in-out;
+    }
+
+    .posts-item__title_link:is(:hover, :focus) {
+        color: var(--color-button-focus);
+    }
+
+    .posts-item__text {
+        --line: 3;
+        font-family: var(--font-OpenSans);
+        font-size: 16px;
+        color: var(--color-DarkGray);
+        font-style: normal;
+        text-wrap: balance;
+        margin-top: var(--step-content);
+    }
+</style>

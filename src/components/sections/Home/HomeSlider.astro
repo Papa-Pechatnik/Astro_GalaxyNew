@@ -1,0 +1,159 @@
+---
+import { Image } from "astro:assets"
+import img1Slider from "./slider/slide1.jpg";
+import img2Slider from "./slider/slide2.jpg";
+import img3Slider from "./slider/slide3.jpg";
+import arrowLeft from "./slider/left.png";
+import arrowRight from "./slider/right.png";
+
+const SliderText =[
+    {
+        id: "1",
+        citation: "Astronomia saa sielun katsomaan ylöspäin ja johdattaa meidät tästä maailmasta toiseen.",
+        author: "Plato"},
+    {
+        id: "2",
+        citation: "Astronomia... saa sielun katsomaan ylöspäin ja johdattamaan sen sinne, pois kaikesta täällä.",
+        author: "Plato"},
+    {
+        id: "3",
+        citation: "Näiden tilojen ikuinen hiljaisuus pelottaa minua",
+        author: "Blaise Pascal"},
+
+]
+---
+<section class="slider">
+    <ul class="slider-list">
+        <li class="slider-item">
+            <Image class="slider-img" src={img1Slider} alt="fgfhg"/>
+            <p class="slider-text slider-item__citation font-Yanone color_white">{SliderText[0].citation}</p>
+            <p class="slider-text slider-item__author color_white font-size-h5 ">{SliderText[0].author}</p>
+        </li>
+         <li class="slider-item">
+            <Image class="slider-img" src={img2Slider} alt="fgfhg"/>
+            <p class="slider-text slider-item__citation font-Yanone color_white">{SliderText[1].citation}</p>
+            <p class="slider-text slider-item__author color_white font-size-h5 ">{SliderText[1].author}</p>
+        </li>
+       <li class="slider-item">
+        <Image class="slider-img" src={img3Slider} alt="fgfhg"/>
+            <p class="slider-text slider-item__citation font-Yanone color_white">{SliderText[2].citation}</p>
+            <p class="slider-text slider-item__author color_white font-size-h5 ">{SliderText[2].author}</p>
+        </li>
+    </ul>
+    <div class="arrow">
+        <Image class="prev controlls" src={arrowLeft} alt="fgfhg"/>
+    </div>
+
+    <div class="arrow">
+        <Image class="next controlls" src={arrowRight} alt="fgfhg"/>
+    </div>
+</section>
+
+<script>
+    const images = document.querySelectorAll < HTMLElement > ('.slider-item');
+    const controls = document.querySelectorAll < HTMLElement > ('.controlls');
+    let imageIndex = 0;
+
+    controls.forEach((control) => {
+        control.addEventListener('click', (event: Event) => {
+            const target = event.target as HTMLElement; // Приведение типов  
+            if (target.classList.contains('prev')) {
+                let index = imageIndex - 1;
+                if (index < 0) {
+                    index = images.length - 1;
+                }
+                show(index);
+            } else if (target.classList.contains('next')) {
+                let index = imageIndex + 1;
+                if (index >= images.length) {
+                    index = 0;
+                }
+                show(index);
+            }
+        });
+    });
+
+    function show(index: number): void {
+        images[imageIndex].classList.remove('active');
+        images[index].classList.add('active');
+        imageIndex = index;
+    }
+    
+    show(imageIndex);
+</script>
+<style>
+    .slider {
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    min-height: 320px;
+    aspect-ratio: 1200 / 500;
+    }
+
+    .slider-list {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;    
+    }
+
+    .slider-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slider-item.active {
+  opacity: 1;
+}
+.slider-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.slider-text {
+    width: 70%;
+    text-align: center;
+    text-wrap: balance;
+    z-index: 1;
+}
+
+.slider-item__citation {
+font-size:  clamp(2rem, -0.01533rem + 5.687vw, 4.25rem);
+}
+
+.slider-item__author {
+    margin-top: var(--padding_30-50);
+}
+
+.arrow .controlls {
+    opacity: 1;
+    width: 20px;
+    height: auto;
+}
+
+.controlls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.slider .prev {
+  left: var(--padding);
+}
+.slider .next {
+  right: var(--padding);
+}
+
+</style>

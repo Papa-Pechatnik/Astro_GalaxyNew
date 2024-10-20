@@ -1,0 +1,193 @@
+---
+import Logo from "../../elements/Logo.astro";
+
+const NavLinks = [
+  { title: "Home", href: "/" },
+  { title: "About", href: "/about" },
+  { title: "Blog", href: "/blog" },
+  { title: "Contacts", href: "/contacts" },
+];
+---
+
+<header class="container">
+  <div class="nav">
+    <a class="nav-logo" href="/">
+      <Logo className="nav-img" width="262"/>
+    </a>
+    <nav class="nav-menu">
+      <button class="hamburger1 hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-list menu-overlay">
+        { NavLinks.map((item) => 
+                <li class="nav-item font-Yanone">
+                    <a class="nav-item__link color_white" 
+                    target="_blank" 
+                    href={item.href} 
+                    title={item.title}>{item.title}</a>
+                </li>
+                ) }
+      </ul>
+    </nav>
+  </div>
+</header>
+ <script>
+
+const nav = document.querySelector(".nav-list") as HTMLElement;
+
+if (nav) {
+    const links = nav.querySelectorAll<HTMLAnchorElement>(".nav-item__link") ;
+    const currentURL = window.location.href;
+
+    links.forEach((link) => {
+        if (link.href === currentURL) {
+            link.classList.add("nav-item_activ");
+        }
+    });
+}  
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger") as HTMLElement;
+    const menuOverlay = document.querySelector(".menu-overlay") as HTMLElement;
+
+    if (hamburger && menuOverlay) {
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open-menu");
+        menuOverlay.classList.toggle("open-menu");
+      });
+    }
+  });
+</script>
+
+<style>
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
+  }
+
+  .nav-menu>button {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    column-gap: 2.5rem;
+  }
+
+  .nav-item__link {
+    font-size: 1.25rem;
+    letter-spacing: .075rem;
+    line-height: 160%;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    transition: all 0.5s;
+  }
+
+  .nav-item__link:is(:hover, :focus) {
+    color: var(--color-Gray);
+  }
+
+  .nav-item_activ {
+    color: var(--color-orange);
+  }
+
+  @media (hover: hover) {
+    .blog-pagination__item_link:hover {
+      color: var(--color-Gray);
+    }
+  }
+
+  @media (hover: none) {
+    .blog-pagination__item_link:active {
+      color: var(--color-Gray);
+    }
+  }
+
+  @media screen and (width < 767.98px) {
+
+    .nav-menu {
+      position: relative;
+    }
+
+    .nav-menu>button {
+      display: block;
+    }
+
+    .hamburger {
+      width: 1.75rem;
+      height: 1.5rem;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      z-index: 10;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      background: var(--color-white);
+      display: block;
+      position: absolute;
+      height: .125rem;
+      transform: rotate(0deg);
+      transition: all 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+      opacity: 1;
+      width: 100%;
+      left: 0;
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 0px;
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 9px;
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 18px;
+    }
+
+    .hamburger.open-menu span:nth-child(1) {
+      top: 9px;
+      transform: rotate(135deg);
+    }
+
+    .hamburger.open-menu span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    .hamburger.open-menu span:nth-child(3) {
+      top: 9px;
+      transform: rotate(-135deg);
+    }
+
+    .nav-list {
+      position: absolute;
+      top: -20rem;
+      right: calc(-1 * var(--padding));
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      row-gap: 1.5rem;
+      background: var(--color-DarkBlue);
+      padding: 1.5rem;
+      transition: all 0.4s ease;
+      width: 240px;
+    }
+
+    .nav-list.open-menu {
+      top: 2.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import TeamCard from "./TeamCard.astro";
+import BtnLink from "../../elements/BtnLink.astro";
+---
+<section class="team-section section_padding">
+    <div class="container">
+        <h2 class="font-size-h2 font-Yanone team-title padding_b30-50">Our Team</h2>
+        
+        <ul class="team">
+            <TeamCard
+            imagePath = "./image/ourteam/team-1.jpg"
+            description = "Yrjö Väisälä"
+            name ="Yrjö Väisälä"
+            position="Professorina"
+            linkTwitter="https://x.com/"
+            linkFacebook="https://www.facebook.com/"
+            linkInstagram="https://www.instagram.com/"
+            linkWhatsapp="https://www.whatsapp.com/"
+            />
+
+            <TeamCard
+            imagePath = "./image/ourteam/team-2.jpg"
+            description = "Peter Phillips"
+            name ="Peter Phillips"
+            position="Research Manager"
+            linkTwitter="https://x.com/"
+            linkFacebook="https://www.facebook.com/"
+            linkInstagram="https://www.instagram.com/"
+            linkWhatsapp="https://www.whatsapp.com/"
+            />
+
+            <TeamCard
+            imagePath = "./image/ourteam/team-3.jpg"
+            description = "Andrew Bell"
+            name ="Andrew Bell"
+            position="Systems Engineer"
+            linkTwitter="https://x.com/"
+            linkFacebook="https://www.facebook.com/"
+            linkInstagram="https://www.instagram.com/"
+            linkWhatsapp="https://www.whatsapp.com/"
+            />
+        </ul>
+    </div>
+    <BtnLink text="View all team" />
+</section>
+<style>
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-title {
+        text-align: center;
+    }
+
+    .team {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-row: auto;
+        gap: var(--gap);
+        height: auto;
+    }
+
+    @media screen and (max-width: 1199.98px) {
+        .team {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media screen and (max-width: 739.98px) {
+        .team {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

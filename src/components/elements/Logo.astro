@@ -1,0 +1,31 @@
+---
+import imgSvg from "../../../public/logo.svg";
+
+interface Props {
+    className: string;
+	width?: string;
+    height?: string;
+}
+
+const {className, width, height} = Astro.props;
+---
+
+<img class={className} src={imgSvg.src} width={width} height={height} alt="logo Galaxy" />
+
+<style>
+      
+  .nav-img {
+    width: clamp(10.625rem, -9.08908rem + 41.071vw, 16.375rem);
+    height: auto;
+  }
+
+    .logo-footer {
+        height: 1.875rem;
+    }
+
+    @media screen and (max-width: 575.98px) {
+        .logo-footer {
+            height: 1.25rem;
+        }
+    }
+</style>

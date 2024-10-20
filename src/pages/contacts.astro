@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/sections/Navigation/Navigation.astro";
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import Contact from "../components/sections/Contact.astro";
+import Footer from '../components/sections/Footer/Footer.astro';
+
+const author = "Maksim Stahovskii";
+const page = "Contacts";
+---
+<Layout title={page}>
+    <Navigation/>
+    <HeaderStarrySky titlePage={page} page={page} />
+    <Contact/>
+    <Footer author={author} />
+</Layout>

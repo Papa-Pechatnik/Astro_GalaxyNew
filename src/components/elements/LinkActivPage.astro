@@ -1,0 +1,38 @@
+---
+interface Props {
+	page: string;
+}
+
+const {page} = Astro.props;
+const linkHome = "/";
+---
+<ul class="link-page">
+    <li class="link-item">
+        <a class="link-item__link" href={linkHome} target="_blank" aria-label="link page home">Home</a>
+    </li>
+    <li class="link-item">&rarr;</li>
+    <li class="link-item">{page}</li>
+</ul>
+<style>
+    .link-page {
+        --step: clamp(1.25rem, 0.1388rem + 2.315vw, 1.875rem);
+        margin-top: var(--step);
+        margin-bottom: var(--step);
+        display: inline-flex;
+        gap: var(--step);
+    }
+
+    .link-item,
+    .link-item__link {
+        font-family: var(--font-OpenSans);
+        font-size: clamp(0.875rem, 0.20828rem + 1.389vw, 1.25rem);
+        font-weight: 400;
+        letter-spacing: .01rem;
+        color: var(--color-white);
+        transition: all 0.5s;
+    }
+
+    .link-item__link:hover {
+        color: var(--color-orange);
+    }
+</style>

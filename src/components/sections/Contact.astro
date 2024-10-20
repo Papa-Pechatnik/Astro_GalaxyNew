@@ -1,0 +1,50 @@
+---
+const data = {
+    email: "ursa@ursa.fi",
+    tel: "096840400"
+};
+---
+<section class="container">
+    <div class="contacts color_white padding_b30-50">
+        <h1 class="font-Yanone font-size-h2 padding_t30-50 padding_b30-50">Address</h1>
+        <p>
+            <strong>Tähtitieteellinen yhdistys Ursa ry</strong>
+        </p>
+        <p>
+            <span>avoinna</span>
+            <strong>ti, to ja pe klo
+                <time datetime="12:00 to 16:00">12–16</time>
+            </strong>
+        </p>
+        <address>
+            <p>Kopernikuksentie 1</p>
+            <p>00130 Helsinki</p>
+            <p>sähköposti :
+                <a href=`mailto:${data.email}`>{data.email}</a>
+            </p>
+            <p>
+                puhelin arkisin 10–16
+                <a href=`tel:${data.tel}`>: {data.tel}</a>
+            </p>
+        </address>
+    </div>
+</section>
+
+<style>
+    .contacts {
+        width: max-content;
+    }
+    p {
+        font-family: var(--font-OpenSans);
+        font-weight: 400;
+        font-style: normal;
+        font-size: clamp(1rem, 0.70131rem + 0.885vw, 1.25rem);
+        line-height: 150%;
+        text-align: left;
+        margin-bottom: clamp(.9375rem, 0.44834rem + 1.293vw, 2rem);
+    }
+
+    a {
+        color: var(--color-Gray);
+    }
+</style>

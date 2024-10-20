@@ -1,0 +1,179 @@
+---
+import { Picture } from "astro:assets";
+import newstitle from "../../../../images/news/news-1/news1_title.jpg";
+
+---
+<li class="news-item">
+    <header class="item-header">
+        <Picture
+        class="item-header__img"
+        src={newstitle} 
+        formats={["avif", "webp", "jpeg" ]} 
+        widths={[320, 530, 960, newstitle.width]}
+        sizes={`(max-width: 390px) 320px,
+                (max-width: 576px) 530px,
+                (max-width: 992px) 960px,
+                (min-width: 1200px) ${newstitle.width}px`}
+        width={530}
+        height={414}        
+        alt="newstitle" />
+    </header>
+    <article class="item-content">
+        <section class="item-content__right">
+            <h3 class="font-size-h3 font-Yanone news-title">
+                <a class="line-clamp news-title__link " href="">
+                    это водный животный организм это водный животный организм это водный животный организм это водный
+                    животный организм это водный животный организм
+                </a>
+            </h3>
+            <p class="item-content-text line-clamp">
+                Рыба - это водный животный организм, который обитает в пресноводных и морских водоемах. Она является
+                одним из самых распространенных видов животных на Земле и имеет огромное значение для экосистемы и
+                человечества. Рыбы разнообразны по форме, размеру и цвету. Они могут быть мелкими и крупными, окрашены в
+                различные оттенки и иметь разнообразные формы тела. Некоторые виды рыб обладают уникальными адаптациями,
+                позволяющими им выживать в различных условиях среды.
+            </p>
+        </section>
+        <section class="item-content__left">
+            <h5 class="font-size-h5 color_white">News</h5>
+            <time class="data-info_datetime" datetime="2015-09-23 21:13">
+                <span class="data-info_date">
+                    September 23,
+                </span>
+                <span class="data-info_year">
+                    2015
+                </span>
+                <p class="data-info_time">
+                    at 21:13
+                </p>
+            </time>
+        </section>
+    </article>
+</li>
+<style>
+    .news-item {
+        --col: 2;
+        display: block;
+        max-width: 530px;
+        min-width: 421px;
+        width: calc((100% / var(--col)) - var(--gap));
+    }
+
+    .item-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: .375rem;
+        aspect-ratio: 530 / 414;
+    }
+
+    .item-header__img {
+        width: 100%;
+        aspect-ratio: inherit;
+        object-fit: cover;
+    }
+    
+
+    .item-content {
+        --step-content: 1em;
+        display: flex;
+        font-family: var(--font-OpenSans);
+        font-size: clamp(0.875rem, 0.44636rem + 0.893vw, 1rem);
+        font-weight: 400;
+        letter-spacing: .0088rem;
+        line-height: 175%;
+        color: var(--color-DarkGray);
+    }
+
+    .item-content__right {
+        --content-right: 9%;
+    }
+
+    .item-content-text {
+        --line: 5;
+        font-style: normal;
+        text-wrap: balance;
+        margin-top: var(--step-content);
+        padding-right: var(--content-right);
+    }
+
+    .item-content__left {
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: var(--step-content);
+    }
+
+    .news-title {
+        --step: 2em;
+        --step-pad: calc(var(--step) / 2);
+        align-content: center;
+        background: var(--color-black1);
+        margin-top: calc(-1 * (var(--step) + var(--step-pad)));
+        padding-top: var(--step-pad);
+        padding-right: var(--content-right);
+        border-top-right-radius: .375rem;
+
+    }
+
+    .news-title__link {
+        transition: 0.5s all ease-in-out;
+        color: var(--color-orange);
+    }
+
+    .news-title__link:is(:hover, :focus) {
+        color: var(--color-white);
+    }
+
+    .data-info_datetime {
+        font-style: italic;
+    }
+
+    .data-info_date,
+    .data-info_time {
+        text-wrap: nowrap;
+    }
+
+    @media screen and (max-width: 991.98px) {
+        .news-item {
+            --col: 1;
+            max-width: 570px;
+            width: 100%;
+            min-width: 250px;
+        }
+    }
+
+    @media screen and (max-width: 575.98px) {
+        /* .news-item {
+            --col: 1;
+            width: 90%;
+        } */
+        
+        .news-title {
+            margin-top: 0;
+            border-top-right-radius: 0;
+        }
+
+        .item-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item-content__right {
+            --content-right: 0;
+            text-align: center;
+        }
+
+        .item-content-text {
+            --line: 3;
+        }
+
+        .data-info_datetime {
+            display: flex;
+            gap: .5rem;
+        }
+    }
+</style>

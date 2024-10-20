@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/sections/Navigation/Navigation.astro';
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import PostInfoCard from '../components/sections/Blog/PostInfoCard.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+const author = "Maksim Stahovskii";
+const page = "Blog";
+
+---
+
+<Layout title={page} author={author}>
+    <Navigation/>
+    <HeaderStarrySky titlePage={page} page={page} />
+    <main class="container">
+        <section class="blog">
+            <ul class="blog-grid posts-list">
+                <PostInfoCard
+                id = "1"
+                imagePath = "../Posts/tahtijoukko.jpg"
+                description = "Tahtijoukko"
+                title = "Tietoa tähtitieteestä"
+                annotation = "Tässä tekstissä käsitellään tähtitieteen historiaa ja kehitystä aina 1600-luvulta nykypäivään saakka. Kaukoputkien ja valokuvauksen keksiminen avasi uusia mahdollisuuksia, jotka mullistivat maailmankuvamme ja paransivat havaintomahdollisuuksia. Radiotähtitieteen kehittyminen syvensi ymmärrystämme maailmankaikkeudesta, kun uusia säteilyn muotoja alettiin tutkia. Vaikka moderni tähtitiede perustuu edistyneisiin menetelmiin, tähtiharrastus ja havainnointi paljain silmin ovat edelleen merkittäviä. Suomalaisten amatööritähtiharrastajien panos ammattitutkimuksessa tuo esiin tähtitieteen yhteisöllisyyden ja innostuksen."/>
+
+                <PostInfoCard
+                id = "2"
+                imagePath = "../Posts/galaksit.jpg"
+                description = "Galaksit"
+                title = "Galaksit"
+                annotation = "Teksti käsittelee galaksien rakennetta, syntyä ja erilaisten galaksityyppien ominaisuuksia. Galaksit, joita maailmankaikkeudessa on arvioitu olevan ainakin 170 miljardia, koostuvat kaasusta, pölystä, pimeästä aineesta ja tähdistä, ja ne pysyvät koossa painovoiman vaikutuksesta. Ensimmäiset galaksit muotoutuivat alle miljardin vuoden sisällä alkuräjähdyksestä. Spiraaligalaksit, joista Linnunrata on esimerkki, syntyvät nuorten tähtien liikkuessa spiraalihaaroissa, kun taas elliptiset galaksit muodostavat suuren osan galakseista, ollen pääasiassa vanhoista tähdistä koostuvia. Monet galaksien ytimet sisältävät supermassiivisia mustia aukkoja, ja galaksit ympäröi pimeän aineen halo. Galaksien dynamiikka ja kehitys ovat jatkuvasti tutkinnan kohteena, ja galaksien törmäykset ja yhdistymiset ovat merkittäviä niiden kehityksessä ja rakenteen muokkauksessa."/>
+
+                <PostInfoCard
+                id = "3"
+                imagePath = "../Posts/tahdet.jpg"
+                description = "Tähdet"
+                title = "Tähdet"
+                annotation = "Tähdet ovat hyvin kuumasta kaasusta eli plasmasta muodostuneita valtavia palloja. Tähtien massa koettaa vetää niitä gravitaation voimalla kasaan, mutta tämä kasaanpainuminen nostaa vastaavasti tähden ytimen lämpötilaa ja painetta. Paine vastustaa gravitaation vaikutusta, ja tähti pysyy näin tasapainotilassa"/>
+
+                <PostInfoCard
+                id = "4"
+                imagePath = "../Posts/tahtijoukko.jpg"
+                description = "Nuori tähtijoukko NGC 602 sijaitsee Linnunradan pienessä naapurigalaksissa"
+                title = "Tähtien synty ja kehitys"
+                annotation = "Tähdet syntyvät, kun tähtienvälinen kaasu- ja pölypilvi luhistuu kasaan. Pilvi koostuu pääasiassa vedystä, joka on kaikkein kevyin alkuaine. Mukana on myös heliumia, pölyä (noin yksi prosentti) ja hiukan raskaampia alkuaineita"/>
+
+                <PostInfoCard
+                id = "5"
+                imagePath = "../Posts/aurinkokunta.jpg"
+                description = "Aurinkokunnan planeetat muodostuivat kaasusta"
+                title = "Aurinkokuntamme"
+                annotation ="Aurinkokunta muodostui noin 4,57 miljardia vuotta sitten suuren tähtienvälisen kaasupilven luhistuessa. Pilveen syntyi monia tiivistymiskeskuksia, joihin syntyi tähtiä. Oma Aurinkomme oli yksi niistä." />
+            </ul>
+            <ul class="blog-pagination">
+                <li class="blog-pagination__item ">
+                    <span class="font-Yanone color_white blog-pagination__item_link pagination_active">1</span>
+                </li>
+                <li>
+                <li class="blog-pagination__item">
+                    <a class="font-Yanone color_white blog-pagination__item_link" href="#">2</a>
+                <li>
+                <li class="blog-pagination__item">
+                    <a class="font-Yanone color_white blog-pagination__item_link" href="#">3</a>
+                <li>
+                <li class="blog-pagination__item">
+                    <a class="font-Yanone color_white blog-pagination__item_link" href="#">4</a>
+                <li>
+            </ul>
+        </section>
+    </main>
+    <Footer author={author} />
+</Layout>
+<style>
+    .blog {
+        width: 100%;
+        --step: clamp(3.125rem, -0.90319rem + 8.403vw, 7.5rem);
+        padding-top: var(--step);
+        padding-bottom: var(--step);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(270px, 370px));
+        justify-content: space-between;
+        gap: 1.875rem;
+    }
+
+    .posts-list {
+        margin-bottom: clamp(3.125rem, -0.19611rem + 6.928vw, 5rem);
+    }
+
+    .blog-pagination {
+        align-self: start;
+        display: flex;
+        gap: .625rem;
+        margin-top: .625rem;
+        margin-bottom: .625rem;
+    }
+
+    .blog-pagination__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .blog-pagination__item_link {
+        display: block;
+        min-width: 3.125rem;
+        font-size: 1.125rem;
+        border-radius: .375rem;
+        text-align: center;
+        justify-content: center;
+        background-color: var(--color-button-primary);
+        padding: .9375rem .6875rem;
+        transition: all 0.25s ease-in-out;
+    }
+
+    .blog-pagination__item_link.pagination_active {
+        background: var(--color-DarkGray);
+    }
+
+    @media (hover: hover) {
+        .blog-pagination__item_link:hover {
+            background-color: var(--color-button-focus);
+        }
+    }
+
+    @media (hover: none) {
+        .blog-pagination__item_link:active {
+            background-color: var(--color-button-focus);
+        }
+    }
+
+    @media screen and (max-width: 991.98px) {
+        .blog-grid {
+            grid-template-columns: repeat(2, minmax(240px, 370px));
+        }
+        .blog-pagination {
+        align-self: center;
+    }
+
+    }
+
+    @media screen and (max-width: 577.98px) {
+        .blog-grid {
+            grid-template-columns: minmax(240px, 370px);
+        }
+        .blog-pagination {
+        align-self: center;
+    }
+    }
+</style>

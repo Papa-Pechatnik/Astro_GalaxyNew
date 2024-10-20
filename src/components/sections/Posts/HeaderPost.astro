@@ -1,0 +1,53 @@
+---
+interface Props {
+    authorPost: string;
+	pubDate: string;
+    pubTime: string;
+    tagPost: string;
+    ["class"]?: string;
+}
+
+const {authorPost, pubDate, pubTime, tagPost, ["class"]: className = ""} = Astro.props;
+
+---
+<header class="header">
+    <ul class:list={['header-list color_white', [className]]}>
+        <li>by
+            <span class="text_nowrap color_orange">
+                {authorPost}
+            </span>
+        </li>
+        <li>
+            <time datetime=`${pubDate} ${pubTime}`>
+                <span class="text_nowrap">{pubDate}</span>
+                <span class="text_nowrap">at {pubTime}</span>
+            </time>
+        <li class="text_align color_orange">
+            {tagPost}
+        </li>
+    </ul>
+</header>
+
+<style>
+    .header {
+        margin-top: var(--step);
+    }
+
+    .header-list {
+        display: flex;
+        gap: clamp(1.875rem, 0.0339rem + 7.752vw, 3.75rem);
+    }
+
+    .text_align {
+        text-align: left;
+    }
+
+    .text {
+        font-family: var(--font-OpenSans);
+        font-size: clamp(0.75rem, 0.50443rem + 1.034vw, 1rem);
+        font-weight: 400;
+        letter-spacing: .01rem;
+        line-height: 175%;
+        text-align: left;
+    }
+</style>

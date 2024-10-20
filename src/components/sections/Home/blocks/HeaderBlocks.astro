@@ -1,0 +1,39 @@
+---
+interface Props {
+    classHeader?: string;
+    subtitle: string;
+	title: string;
+    className?: string;
+}
+
+const { classHeader, subtitle, title, className } = Astro.props;
+---
+
+<header class=`${classHeader}`>
+    <h5 class="font-size-h5">{subtitle}</h5>
+    <h2 class:list={['font-size-h2 font-Yanone', `${[className]}`]}>{title}</h2>
+</header>
+
+<style>
+    .center {
+        text-align: center;
+    }
+
+    .left {
+        text-align: left;
+    }
+
+    .about-title {
+        margin-left: calc(-1 * clamp(110px, 8vw, 150px));
+    }
+
+    @media screen and (max-width: 991.98px) {
+        .about-title {
+            margin-left: 0;
+        }
+
+        .left {
+            text-align: center;
+    }
+    }
+</style>

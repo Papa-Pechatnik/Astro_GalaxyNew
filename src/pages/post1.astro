@@ -1,0 +1,89 @@
+---
+import "../../src/styles/post.css";
+
+import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/sections/Navigation/Navigation.astro";
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import HeaderPost from '../components/sections/Posts/HeaderPost.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+import { Image } from 'astro:assets';
+import img_1_Local from "../components/sections/Posts/tahtijoukko.jpg";
+import img_2_Local from "../components/sections/Posts/pluto.jpg";
+
+const author = "Maksim Stahovskii";
+const page = "Post";
+
+const blog = {
+    idPost: 1,
+    titlePost: 'Tietoa tähtitieteestä',
+    authorPost: "Veikko Mäkelä",
+    pubDate: "2024-06-01",
+    pubTime: "12:13",
+    tagPost: "News, Ufology, Research"
+};
+
+---
+
+<Layout title={page} author={author} />
+    <Navigation/>
+    <HeaderStarrySky titlePage={blog.titlePost} page=`Blog &emsp;&rarr;&emsp; ${page}` />
+        <main class="container">
+            <div class="post-box">
+                <HeaderPost authorPost={blog.authorPost}, pubDate={blog.pubDate}, pubTime={blog.pubTime},
+                    tagPost={blog.tagPost}, class="text" />
+                <section class="post">
+                    <p class="text  text_align color_white">
+                        Tähtitieteellisen tutkimuksen piiriin kuuluu aivan kaikki ilmakehän ulkopuolella oleva
+                        <span>&mdash;</span>
+                        Kuu, oma aurinkokuntamme, sen lähitähdet, oma galaksimme Linnunrata, sen naapurigalaksit ja koko
+                        universumin galaksipaljous.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Aina 1600-luvulle saakka kaikki tähtitieteelliset havainnot piti tehdä paljain silmin. Kaukoputken
+                        keksimisen myötä saatettiin nähdä kauempana olevia ja himmeämpiä kohteita, ja maailmankuvamme
+                        mullistui. Maa ei ollutkaan maailmankaikkeuden keskipiste, vaan planeettamme kiersikin Aurinkoa,
+                        joka sekin oli vain yksi monista tähdistä Linnunradan tähtimuodostelmassa.
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_1_Local} alt="Tahtijoukko" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Valokuvauksen keksiminen 1800-luvun alkupuolella mullisti tähtitieteen uudelleen. Entistä himmeämpiä
+                        kohteita saatiin havaittua, kun niistä voitiin tehdä pitkiä valotuksia. Lisäksi taivaan kohteet
+                        saatiin nyt ikuistettua jälkipolville ja niissä tapahtuvat muutokset voitiin huomata. näin löytyi
+                        esim. kääpiöplaneetta Pluto, pieni liikkuva piste tähtimeren seassa.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Radiotähtitiede keksittiin, kun sotilaskäyttöön kehitetty radioantenni havaitsi Linnunradan
+                        keskuksesta tulevaa radiosäteilyä. Jo aiemmin oli ymmärretty, että näkyvä valo on vain yksi kapea
+                        siivu säteilystä, jota sähkö ja magnetismi aiheuttavat.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Radiotähtitiede avasi tietä uusille havaintomenetelmille kuten infrapunatähtitieteelle ja
+                        röntgentähtitieteelle. Nämä keksinnöt avasivat meille viimein ikkunan maailmankaikkeuteen, joka oli
+                        ollut meiltä aiemmin piilossa. Ymmärtämyksemme maailmankaikkeudesta on syventynyt merkittävästi
+                        näiden uusien havaintojen valossa.
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_2_Local} alt="Pluto" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Tähtitiede on kuitenkin edelleen myös sitä, että menee ulos pimeän aikaan ja katsoo omin silmin
+                        taivaalle. Kuun vaiheet, kuun - ja auringonpimennykset, meteoriparvien aiheuttamat tähdenlennot ja
+                        useimmat planeetat näkyvät hyvin myös paljain silmin. Toisinaan taivaan halki saattaa kulkea
+                        komeetta upeine pyrstöineen, ja revontulia näkyy taivaalla Etelä - Suomessakin, kun Auringon
+                        magneettinen aktiivisuus on huipussaan.
+                    </p>
+                    <p class="text text_align color_white">
+                        Ammattitason tähtitiedettä voi edistää toisinaan myös harrastajavoimin. Jos omassa käytössä on
+                        kaukoputki, sen avulla voi tehdä sellaisia pitkäkestoisia tai nopeita havaintoja, joihin
+                        ammattilaislaitteet eivät ehdi. Tällä tavalla ovat suomalaisetkin tähtiharrastajat olleet mukana
+                        esimerkiksi gammapurkausten ja supernovien ammattitutkimuksessa.
+                    </p>
+                </section>
+            </div>
+
+        </main>
+    <Footer author={author} />
+</Layout>

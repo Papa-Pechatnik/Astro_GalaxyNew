@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+
+interface Images {
+    imagePath: string;
+    description: string;
+    title: string;
+}
+
+interface Positon {
+    name: string;
+    position: string;
+}
+
+interface SocialNetworks {
+    linkTwitter: string;
+    linkFacebook: string;
+    linkInstagram: string;
+    linkWhatsapp: string;
+} 
+
+const {imagePath, description} = Astro.props as Images;
+const {name, position} = Astro.props as Positon;
+const {linkTwitter, linkFacebook, linkInstagram, linkWhatsapp} = Astro.props as SocialNetworks;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("./image/ourteam/*.{jpeg,jpg,png,gif}",);
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "./image/ourteam/*.{jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
+  );
+
+---
+<li class="team-item">
+    <div class="item-img">
+        <Image
+        src={images[imagePath]()}
+        class="item-img__img"
+        width="370"
+        height="370"
+        alt={description}/>
+    </div>
+    <article class="item-content">
+        <header class="item-header color_white">
+            <h3 class="header-title">
+                <a class="font-Yanone font-size-h3 header-title__link " href="#">{name}</a>
+            </h3>
+            <p class="header-job">{position}</p>
+        </header>
+        <nav class="nav-social">
+            <ul class="social-list">
+            <li>
+                <a class="social__link icon-twitter" href={linkTwitter}></a>
+            </li>
+            <li>
+                <a class="social__link icon-facebook" href={linkFacebook}></a>
+            </li>
+            <li>
+                <a class="social__link icon-instagram" href={linkInstagram}></a>
+            </li>
+            <li>
+                <a class="social__link  icon-whatsapp" href={linkWhatsapp}></a>
+            </li>
+        </ul>
+        </nav>
+    </article>
+
+</li>
+
+<style>
+    .team-item {
+        max-width: 23.125rem; 
+        min-width: 15.625rem;
+    }
+    .item-img {
+        max-width: 100%;
+        aspect-ratio: 370 / 370;
+        border-radius: .375rem;
+        overflow: hidden;
+    }
+    .item-img__img {
+        max-width: 100%;
+        aspect-ratio: inherit;
+        object-fit: cover;
+    }
+.item-content {
+    margin-top:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item-header {
+    text-align: center;
+}
+
+.header-title__link {
+    transition: 0.5s all ease-in-out;
+}
+
+.header-title__link:is(:hover, :focus) {
+        color: var(--color-orange);
+    } 
+
+    .header-job {
+        font-family: var(--font-OpenSans);
+        font-size: clamp(.875rem, 1.62vw, 1rem);
+        font-style: italic;
+        line-height: 1.75;
+        font-weight: 400;
+        letter-spacing: .01em;
+        text-transform: capitalize;
+    }
+    .nav-social {
+        margin-top: 10px;
+    }
+    .social-list {
+        display: flex;
+        column-gap: 24px;
+    }
+    .social__link {
+        font-size: 18px;
+        color: var(--color-white);
+    }
+    .social__link:is(:hover, :focus) {
+        color: var(--color-orange);
+    }
+</style>
+

@@ -1,0 +1,56 @@
+---
+import Logo from '../../elements/Logo.astro';
+
+interface Props {
+	author: string;
+}
+
+const { author} = Astro.props;
+---
+<footer class="footer-background">
+    <div class="container">
+        <div class="footer">
+            <Logo className="logo-footer"/>
+            <p class="copyright">
+                &#169; 2024
+                <cite>
+                    {author}
+                </cite>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-background {
+        background: var(--color-DarkBlue);        
+    }
+    .footer {
+        --pad: 1.875rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: var(--pad);
+        padding-bottom: var(--pad);
+    }
+
+    .copyright, cite {
+        font-family: var(--font-OpenSans);
+        font-weight: 400;
+        font-style: normal;
+        font-size: .75rem;
+        line-height: 1.6;
+        letter-spacing: .01em;
+        color: var(--color-DarkGray);
+    }
+
+    @media screen and (max-width: 575.98px) {
+        /* .imglogo {
+        height: 1.25rem;
+    } */
+    .copyright, cite {
+        font-size: .75rem;
+    }
+    }
+
+</style>

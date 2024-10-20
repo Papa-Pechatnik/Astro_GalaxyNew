@@ -1,0 +1,51 @@
+.post-box{
+    --step: clamp(1.875rem, 0.6476rem + 5.168vw, 3.125rem);
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: clamp(1.25rem, 0.0962rem + 3.205vw, 2.5rem);
+    margin-top: var(--step);
+    margin-bottom: var(--step);
+}
+
+.image-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 48.125rem;
+    width: 100%;
+    aspect-ratio: 770 / 440;
+    border-radius: .375rem;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.text {
+    font-family: var(--font-OpenSans);
+    font-size: clamp(0.75rem, 0.50443rem + 1.034vw, 1rem);
+    font-weight: 400;
+    letter-spacing: .01rem;
+    line-height: 175%;
+    text-align: left;
+}
+
+.text_align {
+    text-align: left;
+}
+
+@media screen and (max-width: 767.98px) {
+    .text {
+        line-height: 125%;
+    }
+
+    .text_align {
+        text-align: justify;
+    }
+}

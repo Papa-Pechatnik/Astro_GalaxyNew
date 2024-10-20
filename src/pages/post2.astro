@@ -1,0 +1,70 @@
+---
+import "../../src/styles/post.css";
+
+import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/sections/Navigation/Navigation.astro";
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import HeaderPost from '../components/sections/Posts/HeaderPost.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+import { Image } from 'astro:assets';
+import img_1_Local from "../components/sections/Posts/galaksit.jpg";
+import img_2_Local from "../components/sections/Posts/galaksit2.jpg";
+import img_3_Local from "../components/sections/Posts/galaksit3.jpg";
+
+
+const author = "Maksim Stahovskii";
+const page = "Post";
+
+const blog = {
+    idPost: 2,
+    titlePost: 'Galaksit',
+    authorPost: "ESA/Hubble/Nasa",
+    pubDate: "2024-08-01",
+    pubTime: "10:13",
+    tagPost: "News, Ufology, Research"
+};
+
+---
+
+<Layout title={page} author={author} />
+    <Navigation/>
+    <HeaderStarrySky titlePage={blog.titlePost} page=`Blog &emsp;&rarr;&emsp; ${page}` />
+        <main class="container">
+            <div class="post-box">
+                <HeaderPost authorPost={blog.authorPost}, pubDate={blog.pubDate}, pubTime={blog.pubTime},
+                    tagPost={blog.tagPost}, class="text" />
+                <section class="post">
+                    <p class="text  text_align color_white">
+                        Galaksit ovat valtavia kaasusta, pölystä, pimeästä aineesta ja tähdistä muodostuneita rakenteita, joita painovoima pitää kasassa. Maailmankaikkeudessa arvellaan olevan ainakin 170 miljardia galaksia.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Ensimmäiset galaksit muodostuivat alle miljardin vuoden kuluttua alkuräjähdyksestä, kun universumin täyttäneessä kaasussa olevat pienet tihentymät alkoivat tiivistyä entisestään painovoiman vaikutuksesta.
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_1_Local} alt="10 000 galaksia" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Galakseja on monen kokoisia ja näköisiä. Tutunnäköiset spiraaligalaksit muodostavat epäsäännöllisten galaksien kanssa yhteensä noin 60 prosenttia kaikista tunnetun avaruuden galakseista. 
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_2_Local} alt="löyhästi rajattu spiraaligalaksi" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Spiraaligalaksit ovat litteän kiekkomaisia. Niitten spiraalihaaroissa syntyy runsaasti nuoria tähtiä. Spiraalihaarojen välissä on hiukan vanhempia tähtiä, ja galaksien keskusaluetta kiertää vanhoja tähtiä. Monien spiraaligalaksien keskusalue on sauvamaisen muotoinen, ja näitä galakseja kutsutaan sauvaspiraaligalakseiksi. Myös oman galaksimme Linnunradan on huomattu olevan sauvaspiraaligalaksi. Aurinkokunta sijaitsee Linnunradan kiekon tasossa, ja meitä ympäröivä kiekko näkyy pimeällä yötaivaalla sumumaisena vanana.
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_3_Local} alt="galaksijoukon keskustaa hallitsee massiivinen elliptinen galaksi" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Elliptiset galaksit muodostavat noin 10 - 15 prosenttia kaikista galakseista. Ne ovat joko täysin pallomaisia tai hiukan pitkulaisia tähtimuodostelmia, joiden tähdet ovat pääasiassa vanhoja. Elliptisissä galakseissa on hyvin vähän kaasua, josta uusia tähtiä voisi muodostua. Universumin kaikkein massiivisimmat galaksit ovat elliptisiä galakseja, ja ainakin osan niistä uskotaan syntyvän galaksien yhteentörmäyksissä. 
+                    </p>
+                    <p class="text text_align color_white">
+                        Useimpien galaksien ytimessä uskotaan olevan supermassiivinen musta aukko. Galakseja ympäröi vaikeasti nähtävissä oleva pallomainen haloksi kutsuttu kehä, jossa on muutamia vanhoja tähtiä, pallomaisia tähtijoukkoja sekä runsaasti pimeää ainetta.
+                    </p>
+                </section>
+            </div>
+
+        </main>
+    <Footer author={author} />
+</Layout>

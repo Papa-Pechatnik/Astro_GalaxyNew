@@ -1,0 +1,51 @@
+---
+interface Props {
+    text: string;
+}
+
+const { text } = Astro.props;
+---
+<a href="#"> {text} </a>
+<style>
+    a {
+        display: inline-block;
+        font-family: var(--font-Yanone);
+        font-weight: 700;
+        font-size: 1.125rem;
+        letter-spacing: 0.1em;
+        color: var(--color-white);
+        background: var(--color-button-primary);
+        text-transform: uppercase;
+        padding: .6875rem 2.3125rem .4375rem;
+        border-radius: .375rem;
+        transition: 0.5s all ease-in-out;
+        margin-top: 3.125rem;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    a:is(:hover, :focus) {
+        background: var(--color-button-focus);
+    }
+
+    @media (hover: hover) {
+        a:hover {
+            background: var(--color-button-focus);
+        }
+    }
+
+    @media (hover: none) {
+        a:active {
+            background: var(--color-button-focus);
+        }
+    }
+
+    @media screen and (max-width: 767.98px) {
+        a {
+            font-size: 1rem;
+            padding: .5rem 1.25rem .25rem;
+            margin-top: 1.875rem;
+
+        }
+    }
+</style>

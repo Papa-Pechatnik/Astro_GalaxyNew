@@ -1,0 +1,66 @@
+---
+import "../../src/styles/post.css";
+
+import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/sections/Navigation/Navigation.astro";
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import HeaderPost from '../components/sections/Posts/HeaderPost.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+import { Image } from 'astro:assets';
+import img_1_Local from "../components/sections/Posts/aurinkokunta.jpg";
+import img_2_Local from "../components/sections/Posts/aurinko.jpg";
+
+const author = "Maksim Stahovskii";
+const page = "Post";
+
+const blog = {
+    idPost: 5,
+    titlePost: 'Aurinkokuntamme',
+    authorPost: "ESA/Hubble/Nasa",
+    pubDate: "2022-02-12",
+    pubTime: "12:53",
+    tagPost: "News, Ufology, Research"
+};
+
+---
+
+<Layout title={page} author={author} />
+    <Navigation/>
+    <HeaderStarrySky titlePage={blog.titlePost} page=`Blog &emsp;&rarr;&emsp; ${page}` />
+        <main class="container">
+            <div class="post-box">
+                <HeaderPost authorPost={blog.authorPost}, pubDate={blog.pubDate}, pubTime={blog.pubTime},
+                    tagPost={blog.tagPost}, class="text" />
+                <section class="post">
+                    <p class="text  text_align color_white">
+                        Aurinkokunta muodostui noin 4,57 miljardia vuotta sitten suuren tähtienvälisen kaasupilven luhistuessa. Pilveen syntyi monia tiivistymiskeskuksia, joihin syntyi tähtiä. Oma Aurinkomme oli yksi niistä.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Auringon ympärille muodostui pilven materiaalista kiekko, joka koostui pääasiassa vety- ja heliumkaasusta. Kiekon muodostumiseen meni noin 100 000 vuotta. Joukossa oli myös raskaampia alkuaineita kuten happea, hiiltä ja typpeä sekä erilaisista yhdisteistä muodostunutta pölyä, jota oli kaikesta aineesta noin yksi prosentti. Kun pölyhiukkaset törmäilivät toisiinsa kiekossa, alkoi muodostua suurempia kiinteitä kappaleita. Planeetat muodostuivat niistä miljoonien vuosien törmäilyn seurauksena. 
+                    </p>
+                    <p class="text  text_align color_white">
+                        Aurinkokunnassa on kahdentyyppisiä planeettoja: pieniä kiviplaneettoja sekä suuria kaasuplaneettoja. Kaasuplaneetat muodostuivat ensin. Kaasuplaneetat muodostuivat kiekossa ns. jäärajan takana. Siellä etäisyys Auringosta oli niin suuri, että kaasumaiset aineet alkoivat jäätyä ja ne oli helpompaa kaapata planeettojen rakennusaineeksi. Jouduttuaan planeetan pinnalle jäät kaasuuntuivat uudelleen ja muodostivat planeettojen paksut kaasukehät. 
+                    </p>
+                    <p class="text  text_align color_white">
+                        Kiviplaneetat ovat muodostuneet pääasiassa aurinkokunnan synnyttäneen pilven vähäisestä pölymäärästä. Ainoastaan Maalla ja Venuksella on merkittävän paksut kaasukehät. Kiviplaneetat muodostuivat sisemmässä aurinkokunnassa, jäärajan sisäpuolella.
+                    </p>
+
+                    <div class="image-box">
+                        <Image class="image" src={img_1_Local} alt="Aurinkokunnan planeetat muodostuivat kaasusta" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Aurinko on aurinkokunnan keskuskappale ja lähin tähtemme. Se koostuu pääasiassa ionisoituneesta vety- ja heliumkaasusta eli plasmasta. Auringon massan painovoima vetää plasman pallomaiseen muotoon ja saa aikaan sen, että paine kasvaa kohti Auringon keskustaa. Paineen kasvaminen saa lämpötilan nousemaan, ja Auringon ytimessä se onkin liki 16 miljoonaa astetta. Näin korkeassa lämpötilassa vety voi muuttua heliumiksi. Tämä vedyn fuusio tuottaa samalla energiaa, joka kulkeutuu vähitellen Auringon pinnalle ja säteilee sieltä avaruuteen pääasiassa näkyvänä valona, infrapunasäteilynä sekä ultraviolettisäteilynä.
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_2_Local} alt="Aurinko syyskuussa 2000" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Auringon säteilemä energia on perusedellytys lähes kaikelle elämälle maapallolla, mutta Aurinko vaikuttaa elämäämme myös muilla tavoin. Plasma on nimittäin sähköä johtavaa ainetta, ja sen luontaisesta liikehtimisestä Auringossa syntyy myös hyvin voimakas magneettikenttä. Auringon magneettikenttä kasvaa voimakkaammaksi noin 11 vuoden sykleissä, ja kentän ollessa voimakkaimmillaan Auringon pinnalla on runsaasti auringonpilkkuja ja Maassa nähdään tavanomaista enemmän revontulia. Revontulet johtuvat ns. aurinkotuulesta, joka on Auringosta jatkuvasti purkautuvaa hiukkasvirtaa. Magneettisen aktiivisuuden ollessa korkeaa myös aurinkotuuli on voimakkaampaa. Tämän lisäksi Auringon pinnalta saattaa purkautua avaruuteen suurempia purkauksia, joita kutsutaan aurinko- tai avaruusmyrskyiksi. Jos purkaus suuntautuu kohti maapalloa, revontulia voi näkyä jopa eteläisessä Euroopassa. Normaalisti revontulia näkyy pääasiassa napapiireillä, jonne Maan oma magneettikenttä ohjaa Auringosta saapuneet hiukkaset. Revontulien valoilmiö syntyy hiukkasten osuessa Maan ilmakehään ja saaden ilmakehän kaasumolekyylit säteilemään valoa. Auringon hiukkasmyrskyt voivat myös vahingoittaa satelliitteja ja aiheuttaa muita sähköisiä häiriöitä maapallolla ja avaruudessa.
+                    </p>
+                </section>
+            </div>
+
+        </main>
+    <Footer author={author} />
+</Layout>

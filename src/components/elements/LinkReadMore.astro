@@ -1,0 +1,41 @@
+---
+interface Props {
+	link: string;
+}
+
+const { link } = Astro.props;
+---
+<a class="link" href={link} aria-label="link post">
+    <span class="link__arrow">&#10140;</span>
+    <span class="link__text">READ more</span>
+</a>
+
+<style>
+        .link {
+        display: block;
+        text-transform: uppercase;
+        font-family: var(--font-Yanone);
+        font-weight: 700;
+        font-size: 1.25rem;
+        line-height: 160%;
+        letter-spacing: 0.1em;
+        color: var(--color-orange);
+        transition: color 0.5s;
+
+        &:hover {
+            color: var(--color-white);
+        }
+    }
+
+    @media (hover: hover) {
+        .link:hover {
+            color: var(--color-white);
+        }
+    }
+
+    @media (hover: none) {
+        .link:active {
+            color: var(--color-white);
+        }
+    }
+</style>

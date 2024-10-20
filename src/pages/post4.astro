@@ -1,0 +1,61 @@
+---
+import "../../src/styles/post.css";
+
+import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/sections/Navigation/Navigation.astro";
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import HeaderPost from '../components/sections/Posts/HeaderPost.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+import { Image } from 'astro:assets';
+import img_1_Local from "../components/sections/Posts/tahtijoukko.jpg";
+
+
+
+const author = "Maksim Stahovskii";
+const page = "Post";
+
+const blog = {
+    idPost: 4,
+    titlePost: 'Tähtien synty ja kehitys',
+    authorPost: "ESA/Hubble/Nasa",
+    pubDate: "2023-01-12",
+    pubTime: "10:13",
+    tagPost: "News, Ufology, Research"
+};
+
+---
+
+<Layout title={page} author={author} />
+    <Navigation/>
+    <HeaderStarrySky titlePage={blog.titlePost} page=`Blog &emsp;&rarr;&emsp; ${page}` />
+        <main class="container">
+            <div class="post-box">
+                <HeaderPost authorPost={blog.authorPost}, pubDate={blog.pubDate}, pubTime={blog.pubTime},
+                    tagPost={blog.tagPost}, class="text" />
+                <section class="post">
+                    <p class="text  text_align color_white">
+                        Tähdet syntyvät, kun tähtienvälinen kaasu- ja pölypilvi luhistuu kasaan. Pilvi koostuu pääasiassa vedystä, joka on kaikkein kevyin alkuaine. Mukana on myös heliumia, pölyä (noin yksi prosentti) ja hiukan raskaampia alkuaineita. 
+                    </p>
+                    <p class="text  text_align color_white">
+                        Jos luhistuva pilvi on kovin pieni, tähtiä syntyy ehkä vain yksi, mutta toisinaan hyvin suuret pilvet alkavat luhistua ja tähtiä syntyy runsaasti. Usein puhutaankin tähtien syntyalueista. Valtaosa tähdistä löytyy systeemeistä, joissa toisiaan kiertää kaksi tai useampia tähtiä.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Kun pilvi luhistuu, sen ytimeen alkaa tiivistyä tähti (tai useampia tähtiä). Vaikuttaa siltä, että tähtien syntyessä niitten ympärille muodostuu pilven materiaalista hyvin yleisesti myös yksi tai useampia planeettoja. Tähdet ja planeetat siis syntyvät yhdessä. 
+                    </p>
+                    <p class="text  text_align color_white">
+                        Kun muodostumassa oleva tähti kerää lisää massaa emopilvestään, lämpötila sen ytimessä nousee. Jos tähti kerää tarpeeksi massaa (noin 18 prosenttia Auringon massasta), vety alkaa fuusioitua heliumiksi. Ellei massa riitä lämpötilan nostamiseen näin ylös, lopputuloksena on ns. ruskea kääpiö, joka säteilee hiljaksiin lämpöenergiaansa avaruuteen. 
+                    </p>
+
+                    <div class="image-box">
+                        <Image class="image" src={img_1_Local} alt="Nuori tähtijoukko NGC 602 sijaitsee Linnunradan pienessä naapurigalaksissa" />
+                    </div>
+                    <p class="text  text_align color_white">
+                        Kun vedyn fuusio on alkanut tähden ytimessä, tähteä aletaan kutsua pääsarjan tähdeksi. Kaikki tähdet massastaan riippumatta viettävät pääosan elinkaarestaan pääsarjassa muuttaen vetyä heliumiksi ja säteillen ulos fuusioprosesseissa muodostunutta energiaa. Mitä enemmän massaa tähdellä on, sitä kiivaammin se muuttaa vetynsä heliumiksi. Raskaimmissa tähdissä ytimen lämpötila on niin korkea, että myös helium ja sitä raskaammat alkuaineet fuusioituvat ja tuottavat energiaa. Vasta rauta on alkuaineena sellainen, että sen ydinten liittäminen yhteen kuluttaa energiaa enemmän kuin tuottaa sitä, joten raudan fuusiota ei enää tapahdu tähdissä. 
+                    </p>
+                </section>
+            </div>
+
+        </main>
+    <Footer author={author} />
+</Layout>

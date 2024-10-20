@@ -1,0 +1,95 @@
+---
+import HeaderBlocks from "../Home/blocks/HeaderBlocks.astro";
+
+const listcCounter = [
+  { id: 1, title: "Regular Visitors", counter: "17 929" },
+  { id: 2, title: "Scientific Articles", counter: "537" },
+  { id: 3, title: "Certificates", counter: "34" },
+  { id: 4, title: "Qualified Experts", counter: "149" },
+];
+
+---
+<section class="choice section_padding">
+    <div class="container">
+        <HeaderBlocks classHeader="center" subtitle="why choose us" title="Advantages" />
+        <ul class="counter-list">
+            { listcCounter.map((item) => 
+                <li class:list={['counter-item', `item${item.id}`]}>
+                    <p class="counter-item__number">{item.counter}</p>
+                    <p class="counter-item__title">{item.title}</p>
+                </li>
+                ) }
+        </ul>
+    </div>
+</section>
+<style>
+    .choice {
+        background: var(--color-DarkBlue);
+    }
+
+    .counter-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(150px, 300px));
+        grid-template-rows: auto;
+        gap: var(--gap);
+        /*1200-80 567-40 */
+        margin-top: clamp(2.5rem, 0.1924rem + 6.41vw, 5rem);
+    }
+
+    .item1 {
+        background: var(--color-blue);
+        background-image: url('/icon/icon-person.svg');
+    }
+
+    .item2 {
+        background: var(--color-blue);
+        background-image: url('/icon/icon-check_a.svg');
+    }
+
+    .item3 {
+        background: var(--color-blue);
+        background-image: url('/icon/icon-star.svg');
+    }
+
+    .item4 {
+        background: var(--color-blue);
+        background-image: url('/icon/icon-expert.svg');
+    }
+
+    .counter-item {
+        border-radius: .3125rem;
+        padding: 1.25rem .9375rem 3.125rem;
+
+        background-repeat: no-repeat;
+        background-position: bottom 1.25rem right 1.25rem;
+        background-size: 30%;
+    }
+
+    .counter-item__number {
+        font-family: var(--font-OpenSans);
+        font-weight: 700;
+        /*1200 -48 768 - 30px*/
+        font-size: clamp(1.875rem, -0.12516rem + 4.167vw, 3rem);
+        line-height: 115%;
+        color: var(--color-white);
+    }
+
+    .counter-item__title {
+
+        font-family: var(--font-OpenSans);
+        font-size: clamp(0.875rem, 0.01772rem + 1.786vw, 1.125rem);
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 155%;
+        color: var(--color-white);
+    }
+
+    @media screen and (max-width: 991.98px) {
+        .counter-list {
+            grid-template-columns: repeat(2, minmax(150px, 300px));
+            grid-template-rows: repeat(2, 1fr);
+            justify-content: center;
+            gap: var(--gap);
+        }
+    }
+</style>

@@ -1,0 +1,54 @@
+---
+import "../../src/styles/post.css";
+
+import Layout from '../layouts/Layout.astro';
+import Navigation from "../components/sections/Navigation/Navigation.astro";
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import HeaderPost from '../components/sections/Posts/HeaderPost.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+import { Image } from 'astro:assets';
+import img_1_Local from "../components/sections/Posts/tahdet.jpg";
+
+
+
+const author = "Maksim Stahovskii";
+const page = "Post";
+
+const blog = {
+    idPost: 3,
+    titlePost: 'Tähdet',
+    authorPost: "Hubble/Nasa",
+    pubDate: "2022-01-12",
+    pubTime: "14:15",
+    tagPost: "News, Ufology, Research"
+};
+
+---
+
+<Layout title={page} author={author} />
+    <Navigation/>
+    <HeaderStarrySky titlePage={blog.titlePost} page=`Blog &emsp;&rarr;&emsp; ${page}` />
+        <main class="container">
+            <div class="post-box">
+                <HeaderPost authorPost={blog.authorPost}, pubDate={blog.pubDate}, pubTime={blog.pubTime},
+                    tagPost={blog.tagPost}, class="text" />
+                <section class="post">
+                    <p class="text  text_align color_white">
+                        Tähdet ovat hyvin kuumasta kaasusta eli plasmasta muodostuneita valtavia palloja. Tähtien massa koettaa vetää niitä gravitaation voimalla kasaan, mutta tämä kasaanpainuminen nostaa vastaavasti tähden ytimen lämpötilaa ja painetta. Paine vastustaa gravitaation vaikutusta, ja tähti pysyy näin tasapainotilassa.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Mitä raskaampi tähti on, sitä voimakkaammin gravitaatio vetää sitä kasaan ja sitä kuumempi tähden ydin on. Massa (eli paino) määrittää valtaosan tähden ominaisuuksista kuten lämpötilan, kirkkauden, säteen ja eliniän.
+                    </p>
+                    <p class="text  text_align color_white">
+                        Kuumassa ytimessä vapautuu energiaa, kun vety (ja joissain tapauksissa raskaammatkin alkuaineet) liittyvät yhteen eli fuusioituvat. Kun tämä energia on viimein kulkeutunut tähden pinnalle, se säteilee avaruuteen paitsi näkyvänä valona, myös muunlaisena elektromagneettisena säteilynä (kuten infrapuna - ja uv-säteilynä).
+                    </p>
+                    <div class="image-box">
+                        <Image class="image" src={img_1_Local} alt="Sininen jättiläinen Bellatrix" />
+                    </div>
+                </section>
+            </div>
+
+        </main>
+    <Footer author={author} />
+</Layout>

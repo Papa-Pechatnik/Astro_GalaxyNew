@@ -1,0 +1,103 @@
+
+@font-face {
+    font-family: "Yanone Kaffeesatz";
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+    src:
+        local(""),
+        url("/fonts/Yanone_Kaffeesatz/YanoneKaffeesatz-Bold.woff2") format("woff2"),
+        url("/fonts/Yanone_Kaffeesatz/YanoneKaffeesatz-Bold.woff") format("woff");
+    text-rendering: optimizeLegibility;
+}
+
+
+@font-face {
+    font-family: "NovaMono";
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src:
+        local(""),
+        url("/fonts/Nova_Mono/NovaMono.woff2") format("woff2"),
+        url("/fonts/Nova_Mono/NovaMono.woff") format("woff");
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src:
+        local(""),
+        url("/fonts/Open_Sans/OpenSans-Regular.woff2") format("woff2"),
+        url("/fonts/Open_Sans/OpenSans-Regular.woff") format("woff");
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-style: italic;
+    font-display: block;
+    src:
+        local(""),
+        url("/fonts/Open_Sans/OpenSans-Italic.woff2") format("woff2"),
+        url("/fonts/Open_Sans/OpenSans-Italic.woff") format("woff");
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+    src:
+        local(""),
+        url("/fonts/Open_Sans/OpenSans-Bold.woff2") format("woff2"),
+        url("/fonts/Open_Sans/OpenSans-Bold.woff") format("woff");
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Icomoon';
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+    src:
+        url("/fonts/Icomoon/icomoon.woff2") format("woff2"),
+        url("/fonts/Icomoon/icomoon.woff") format("woff");
+    text-rendering: optimizeLegibility;
+}
+
+[class^="icon-"]::before, [class*=" icon-"]::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    /* speak: never; */
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-facebook::before{
+    content: "\ea90";
+  }
+  .icon-instagram::before {
+    content: "\ea92";
+  }
+  .icon-whatsapp::before{
+    content: "\ea93";
+  }
+  .icon-twitter::before {
+    content: "\ea96";
+  }
+
+
+

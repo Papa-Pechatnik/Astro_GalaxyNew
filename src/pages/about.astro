@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/sections/Navigation/Navigation.astro';
+import HeaderStarrySky from '../components/sections/Header/HeaderStarrySky.astro';
+import Contact from '../components/sections/Contact.astro';
+import Footer from '../components/sections/Footer/Footer.astro';
+
+import OurTeam from '../components/sections/Team/OurTeam.astro';
+
+const author = "Maksim Stahovskii";
+const page = "About Us";
+---
+<Layout title={page}>
+    <Navigation/>
+    <HeaderStarrySky titlePage={page} page={page} />
+    <section class="about">
+        <div class="container">
+            <div class="padding_b30-50">
+                <h1 class="font-Yanone font-size-h2 padding_t30-50 padding_b30-50 color_white">Our Mission</h1>
+                <p class="about-text">
+                    Ursan tarkoituksena on tarjota jäsenilleen ja yleisölle selkeä ja nykyaikainen käsitys
+                    maailmankaikkeudesta, toimia tähtitieteen ja lähialojen harrastuksen edistämiseksi sekä edistää alansa
+                    kouluopetusta ja aikuiskasvatusta.
+                </p>
+                <p class="about-text">
+                    Tähtitieteellinen yhdistys Ursa ry on perustettu vuonna 1921, ja yhdistyksessä on yli 18 000 jäsentä.
+                    Ursa on Suomen suurimpia tieteellisiä yhdistyksiä ja väkilukuun suhteutettuna jäsenmäärä on maailman
+                    huippua.
+                </p> 
+            </div>
+        </div>
+    </section>
+    <OurTeam/>
+    <Contact/>
+    <Footer author={author} />
+</Layout>
+
+<style>
+
+    h1 {
+        text-align: center;
+    }
+    .about {
+        background: var(--color-DarkBlue);
+    }
+
+    .about-text {
+        font-family: var(--font-OpenSans);
+        font-weight: 400;
+        font-size: clamp(1rem, 0.70131rem + 0.885vw, 1.25rem);
+        line-height: normal;
+        color: var(--color-Gray);
+        margin-bottom: clamp(.9375rem, 0.44834rem + 1.293vw, 2rem);
+    }
+</style>

@@ -1,0 +1,124 @@
+@import url("./normalize.css");
+@import url("./fonts.css");
+
+:root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-black1: #1d1d23;
+    --color-orange: #f99200;
+
+    --color-blue: #007bff;
+    --color-indigo: #6610f2;
+    --color-DarkBlue: #29293a;
+
+    --color-Gray: #aeb1b4;
+    --color-DarkGray: #828590;
+
+    --color-button-primary: #3e3ef5;
+    --color-button-focus: var(--color-orange);
+
+
+    --font-NovaMono: "NovaMono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-Yanone: "Yanone Kaffeesatz", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-OpenSans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+
+    --gap: 2rem;
+    --padding: 1rem;
+    --padding_30-50:  clamp(1.875rem, -0.33923rem + 4.619vw, 3.125rem);
+    --width-container: 73.125rem;
+
+    --sm: 567px;
+    --m: 767.98px;
+}
+
+body {
+    background: var(--color-black1);
+}
+
+.container {
+    box-sizing: content-box;
+    --pad-container: clamp(1rem, -7.49984rem + 17.708vw, 8.4375rem);
+    margin-inline: auto;
+    max-width: var(--width-container);
+    /* 768 - 16px 1920px - 375px*/
+    padding-left: var(--pad-container);
+    padding-right: var(--pad-container);
+}
+
+.section_padding {
+/* 1440 - 120px; 540 - 50px*/
+--pad-section: clamp(3.125rem, 0.49993rem + 7.778vw, 7.5rem);
+padding-top: var(--pad-section);
+padding-bottom: var(--pad-section);
+}
+
+.font-Yanone {
+font-family: var(--font-Yanone);
+font-weight: 700; 
+line-height: 112%;
+color: var(--color-white);
+text-transform: capitalize;
+}
+
+.font-size-h2 {
+/* 768 - 30px 1200px - 48px*/
+font-size: clamp(1.875rem, -0.12516rem + 4.167vw, 3rem);
+
+}
+
+.font-size-h3 {
+/* 992 - 26px 1200px - 34px*/
+font-size: clamp(1.625rem, -0.75952rem + 3.846vw, 2.125rem);
+
+}
+
+.font-size-h5 {
+        font-family: var(--font-NovaMono);
+        font-weight: 400;
+        font-size: clamp(1rem, 0.70131rem + 0.885vw, 1.25rem);
+        line-height: 150%;
+        letter-spacing: 0.3em;
+        color: var(--color-Gray);
+        text-transform: lowercase;
+        margin-bottom: clamp(.9375rem, 0.44834rem + 1.293vw, 2rem);
+        /* @media screen and (max-width: 767.98px) {
+            font-size: 18px;
+        } */
+}
+
+.color_white {
+    color: var(--color-white);
+}
+
+.color_darkblue {
+    color: var(--color-DarkBlue);
+}
+
+.color_orange {
+    color: var(--color-orange);
+}
+
+.text_nowrap {
+    text-wrap: nowrap;
+}
+
+.line-clamp {
+    --line: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--line);
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.padding_t30-50 {
+    padding-top: var(--padding_30-50);
+}
+
+.padding_b30-50 {
+    padding-bottom: var(--padding_30-50);
+    }
+
+
