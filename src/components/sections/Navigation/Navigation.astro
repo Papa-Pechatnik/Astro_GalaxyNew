@@ -33,9 +33,11 @@ const NavLinks = [
     </nav>
   </div>
 </header>
- <script>
 
-const nav = document.querySelector(".nav-list") as HTMLElement;
+
+<script>
+
+const nav = document.querySelector<HTMLElement>(".nav-list");
 
 if (nav) {
     const links = nav.querySelectorAll<HTMLAnchorElement>(".nav-item__link") ;
@@ -50,8 +52,8 @@ if (nav) {
 
 
   document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.querySelector(".hamburger") as HTMLElement;
-    const menuOverlay = document.querySelector(".menu-overlay") as HTMLElement;
+    const hamburger = document.querySelector<HTMLElement>(".hamburger");
+    const menuOverlay = document.querySelector<HTMLElement>(".menu-overlay");
 
     if (hamburger && menuOverlay) {
       hamburger.addEventListener("click", () => {
@@ -107,7 +109,7 @@ if (nav) {
 
   @media (hover: none) {
     .blog-pagination__item_link:active {
-      color: var(--color-Gray);
+      color: var(--color-orange);
     }
   }
 
