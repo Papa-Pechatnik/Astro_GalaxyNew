@@ -23,7 +23,7 @@ const NavLinks = [
       <ul class="nav-list menu-overlay">
         { NavLinks.map((item) => 
                 <li class="nav-item font-Yanone">
-                    <a class="nav-item__link color_white" 
+                    <a class="nav-item__link" 
                     target="_blank" 
                     href={item.href} 
                     title={item.title}>{item.title}</a>
@@ -90,6 +90,7 @@ if (nav) {
     font-size: 1.25rem;
     letter-spacing: .075rem;
     line-height: 160%;
+    color: var(--color-white);
     padding: 0.5rem;
     text-transform: uppercase;
     transition: all 0.5s;
