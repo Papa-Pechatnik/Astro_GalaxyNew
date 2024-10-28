@@ -48,43 +48,39 @@ body {
 
 .section_padding {
 /* 1440 - 120px; 540 - 50px*/
---pad-section: clamp(3.125rem, 0.49993rem + 7.778vw, 7.5rem);
-padding-top: var(--pad-section);
-padding-bottom: var(--pad-section);
+    --pad-section: clamp(3.125rem, 0.49993rem + 7.778vw, 7.5rem);
+    padding-top: var(--pad-section);
+    padding-bottom: var(--pad-section);
 }
 
 .font-Yanone {
-font-family: var(--font-Yanone);
-font-weight: 700; 
-line-height: 112%;
-color: var(--color-white);
-text-transform: capitalize;
+    font-family: var(--font-Yanone);
+    font-weight: 700; 
+    line-height: 112%;
+    color: var(--color-white);
+    text-transform: capitalize;
 }
 
 .font-size-h2 {
 /* 768 - 30px 1200px - 48px*/
-font-size: clamp(1.875rem, -0.12516rem + 4.167vw, 3rem);
-
+    font-size: clamp(1.875rem, -0.12516rem + 4.167vw, 3rem);
 }
 
 .font-size-h3 {
 /* 992 - 26px 1200px - 34px*/
-font-size: clamp(1.625rem, -0.75952rem + 3.846vw, 2.125rem);
-
+    font-size: clamp(1.625rem, -0.75952rem + 3.846vw, 2.125rem);
 }
 
 .font-size-h5 {
-        font-family: var(--font-NovaMono);
-        font-weight: 400;
-        font-size: clamp(1rem, 0.70131rem + 0.885vw, 1.25rem);
-        line-height: 150%;
-        letter-spacing: 0.3em;
-        color: var(--color-Gray);
-        text-transform: lowercase;
-        margin-bottom: clamp(.9375rem, 0.44834rem + 1.293vw, 2rem);
-        /* @media screen and (max-width: 767.98px) {
-            font-size: 18px;
-        } */
+    font-family: var(--font-NovaMono);
+    font-weight: 400;
+    font-size: clamp(1rem, 0.70131rem + 0.885vw, 1.25rem);
+    line-height: 150%;
+    letter-spacing: 0.3em;
+    color: var(--color-Gray);
+    text-transform: lowercase;
+    margin-bottom: clamp(.9375rem, 0.44834rem + 1.293vw, 2rem);
+
 }
 
 .color_white {

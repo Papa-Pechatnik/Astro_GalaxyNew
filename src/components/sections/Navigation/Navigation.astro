@@ -47,6 +47,10 @@ if (nav) {
         if (link.href === currentURL) {
             link.classList.add("nav-item_activ");
         }
+
+        if (currentURL.match(/\/post\d/)) {
+          links[2].classList.add("nav-item_activ");
+        }
     });
 }  
 
@@ -92,10 +96,6 @@ if (nav) {
     text-transform: uppercase;
     transition: all 0.5s;
   }
-
-  /* .nav-item__link:is(:hover, :focus) {
-    color: var(--color-Gray);
-  } */
 
   .nav-item__link:hover {
     color: var(--color-Gray);
