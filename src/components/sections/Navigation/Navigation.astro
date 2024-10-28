@@ -44,13 +44,11 @@ if (nav) {
     const currentURL = window.location.href;
 
     links.forEach((link) => {
-        if (link.href === currentURL) {
-            link.classList.add("nav-item_activ");
-        }
-
-        if (currentURL.match(/\/post\d/)) {
-          links[2].classList.add("nav-item_activ");
-        }
+      if (link.href === currentURL) {
+        link.classList.add("nav-item_activ");
+      } else if (currentURL.match(/\/post\d/)) {
+                links[2].classList.add("nav-item_activ");
+              }
     });
 }  
 
