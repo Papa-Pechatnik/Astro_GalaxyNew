@@ -41,7 +41,7 @@ const nav = document.querySelector<HTMLElement>(".nav-list");
 
 if (nav) {
     const links = nav.querySelectorAll<HTMLAnchorElement>(".nav-item__link") ;
-    const currentURL = window.location.href;
+    const currentURL = location.href;
 
     links.forEach((link) => {
       if (link.href === currentURL) {
@@ -60,7 +60,7 @@ if (nav) {
           console.log("------");
           console.log("Нажал" + link.href);
       }
-      
+
     });
 
 
