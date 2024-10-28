@@ -44,14 +44,26 @@ if (nav) {
     const currentURL = window.location.href;
 
     links.forEach((link) => {
-      if (currentURL.match(/\/post\d/)) {
-          links[2].classList.add("nav-item_activ");
-      }
-
       if (link.href === currentURL) {
         link.classList.add("nav-item_activ");
+        console.log("------");
+        console.log("Нажал" + link);
+        
+
+      } else {
+        console.log("--- НЕНАЖАЛ");
+        console.log("----НЕНАЖАЛ" + link);
       }
+
+      if (currentURL.match(/\/post\d/)) {
+          links[2].classList.add("nav-item_activ");
+          console.log("------");
+          console.log("Нажал" + link.href);
+      }
+      
     });
+
+
 }  
 
 
