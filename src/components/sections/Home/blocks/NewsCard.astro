@@ -19,10 +19,10 @@ const { id, imagePath, description } = Astro.props as Images;
 const { title, annotation, pubDate, pubTime } = Astro.props as Content;
 const linkPage = `/post${id}`;
 
-const images = import.meta.glob<{ default: ImageMetadata }>("../../Posts/*.{jpeg,jpg,png,gif}",);
+const images = import.meta.glob<{ default: ImageMetadata }>("../../Posts/*.{webp,jpeg,jpg,png,gif}",);
 if (!images[imagePath])
   throw new Error(
-    `"${imagePath}" does not exist in glob: "../../Posts/*.{jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
+    `"${imagePath}" does not exist in glob: "../../Posts/*.{webp,jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
   );
 
 ---

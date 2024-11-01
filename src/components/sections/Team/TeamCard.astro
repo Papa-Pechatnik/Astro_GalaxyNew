@@ -23,10 +23,10 @@ const {imagePath, description} = Astro.props as Images;
 const {name, position} = Astro.props as Positon;
 const {linkTwitter, linkFacebook, linkInstagram, linkWhatsapp} = Astro.props as SocialNetworks;
 
-const images = import.meta.glob<{ default: ImageMetadata }>("./image/ourteam/*.{jpeg,jpg,png,gif}",);
+const images = import.meta.glob<{ default: ImageMetadata }>("./image/ourteam/*.{webp,jpeg,jpg,png,gif}",);
 if (!images[imagePath])
   throw new Error(
-    `"${imagePath}" does not exist in glob: "./image/ourteam/*.{jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
+    `"${imagePath}" does not exist in glob: "./image/ourteam/*.{webp,jpeg,jpg,png,gif}". See ImageComponent.astro to debug.`,
   );
 
 ---
