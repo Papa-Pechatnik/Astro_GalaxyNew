@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets"
-import img1Slider from "./slider/slide1.jpg";
-import img2Slider from "./slider/slide2.jpg";
-import img3Slider from "./slider/slide3.jpg";
+import img1Slider from "./slider/slide1.avif";
+import img2Slider from "./slider/slide2.avif";
+import img3Slider from "./slider/slide3.avif";
 import arrowLeft from "./slider/left.png";
 import arrowRight from "./slider/right.png";
 
@@ -10,42 +10,52 @@ const SliderText =[
     {
         id: "1",
         citation: "Astronomia saa sielun katsomaan ylöspäin ja johdattaa meidät tästä maailmasta toiseen.",
-        author: "Plato"},
+        author: "Plato",
+        alt: "plato",
+        src: "./slider/slide1.avif",
+    
+    },
     {
         id: "2",
         citation: "Astronomia... saa sielun katsomaan ylöspäin ja johdattamaan sen sinne, pois kaikesta täällä.",
-        author: "Plato"},
+        author: "Plato",
+        alt: "plato",
+        src: "./slider/slide2.avif",
+    },
     {
         id: "3",
         citation: "Näiden tilojen ikuinen hiljaisuus pelottaa minua",
-        author: "Blaise Pascal"},
+        author: "Blaise Pascal",
+        alt: "blaise pascal",
+        src: "./slider/slide3.avif",
+    },
 
 ]
 ---
 <section class="slider">
     <ul class="slider-list">
         <li class="slider-item">
-            <Image class="slider-img" src={img1Slider} alt="fgfhg"/>
+            <Image class="slider-img" src={img1Slider} alt={SliderText[0].alt}/>
             <p class="slider-text slider-item__citation font-Yanone color_white">{SliderText[0].citation}</p>
             <p class="slider-text slider-item__author color_white font-size-h5 ">{SliderText[0].author}</p>
         </li>
          <li class="slider-item">
-            <Image class="slider-img" src={img2Slider} alt="fgfhg"/>
+            <Image class="slider-img" src={img2Slider} alt={SliderText[1].alt}/>
             <p class="slider-text slider-item__citation font-Yanone color_white">{SliderText[1].citation}</p>
             <p class="slider-text slider-item__author color_white font-size-h5 ">{SliderText[1].author}</p>
         </li>
        <li class="slider-item">
-        <Image class="slider-img" src={img3Slider} alt="fgfhg"/>
+        <Image class="slider-img" src={img3Slider} alt={SliderText[2].alt}/>
             <p class="slider-text slider-item__citation font-Yanone color_white">{SliderText[2].citation}</p>
             <p class="slider-text slider-item__author color_white font-size-h5 ">{SliderText[2].author}</p>
         </li>
     </ul>
     <div class="arrow">
-        <Image class="prev controlls" src={arrowLeft} alt="fgfhg"/>
+        <Image class="prev controlls" src={arrowLeft} alt="arrowLeft"/>
     </div>
 
     <div class="arrow">
-        <Image class="next controlls" src={arrowRight} alt="fgfhg"/>
+        <Image class="next controlls" src={arrowRight} alt="arrowRight"/>
     </div>
 </section>
 
