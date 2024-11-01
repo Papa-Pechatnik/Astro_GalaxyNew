@@ -14,8 +14,8 @@ const NavLinks = [
     <a class="nav-logo" href="/">
       <Logo className="nav-img" width="262"/>
     </a>
-    <nav class="nav-menu">
-      <button class="hamburger1 hamburger">
+    <nav class="nav-menu" >
+      <button class="hamburger1 hamburger" aria-label="mobile menu button">
         <span></span>
         <span></span>
         <span></span>
@@ -52,8 +52,6 @@ if (nav) {
     if (currentURL.match(/\/post\d/)) {
           links[2].classList.add("nav-item_activ");
       }
-
-
 }  
 
 
