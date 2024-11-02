@@ -2,7 +2,7 @@
 import HeaderBlock from '../Home/blocks/HeaderBlocks.astro';
 import LinkReadMore from '../../elements/LinkReadMore.astro';
 import { Picture } from 'astro:assets';
-import telescope from "./image/telescope-scaled_1200w.avif";
+import telescope from "./image/telescope-scaled_1200w.webp";
 
 const aboutLink = "/about";
 ---
@@ -10,9 +10,19 @@ const aboutLink = "/about";
     <div class="container">
         <div class="about-box section_padding ">
             <section class="about-picture">
-                <Picture class="about-img" src={telescope} formats={["avif", "webp" ]} widths={[320, 530, 960,
-                    telescope.width]} sizes={`(max-width: 390px) 320px, (max-width: 576px) 530px, (max-width:
-                    992px) 960px, (min-width: 1200px) ${telescope.width}px`} alt="telescope" />
+                <Picture
+                class="about-img" 
+                src={telescope} 
+                quality={25}
+                formats={["avif", "webp" ]} 
+                widths={[320, 540, telescope.width]} 
+                sizes={`(max-width: 390px) 320px,
+                (max-width: 576px) 540px
+                        (min-width: 577px) ${telescope.width}px`}
+                width={530}
+                height={414}
+
+                alt="telescope" />
             </section>
             <section class="about-content-box">
                 <div class="about-content">
@@ -44,15 +54,16 @@ const aboutLink = "/about";
 
     .about-picture {
         z-index: 0;
-        max-width: min(33.125rem, 50%);
-        min-width: 25rem;
+        max-width: min(530px,50%);
+        width: 100%;
+        min-width: 400px;
         aspect-ratio: 530 / 414;
         overflow: hidden;
         position: relative;
     }
 
     .about-img {
-        max-width: 120%;
+        width: 120%;
         height: auto;
     }
 
@@ -109,7 +120,7 @@ const aboutLink = "/about";
         }
 
         .about-picture {
-            max-width: 55%;
+            max-width: 61%;
             min-width: 18.75rem;
         }
 

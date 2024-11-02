@@ -32,12 +32,10 @@ if (!images[imagePath])
         <Picture
         class="item-header__img"
         src={images[imagePath]()}
-        formats={["avif", "webp", "jpeg" ]} 
-        widths={[320, 530, 960, 1920]}
+        formats={["avif", "webp"]} 
+        widths={[320, 570]}
         sizes={`(max-width: 390px) 320px,
-                (max-width: 576px) 530px,
-                (max-width: 992px) 960px,
-                (min-width: 1200px) 1920px`}
+                (min-width: 576px) 570px`}
         fallbackFormat="jpeg"
         width={570}
         height={445}        

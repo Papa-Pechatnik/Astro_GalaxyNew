@@ -18,12 +18,15 @@ import BtnLink from "../../elements/BtnLink.astro";
         <Picture
         class="excursions__img-img"
         src={imgLocal} 
-        formats={["avif", "webp", "jpeg" ]} 
+        formats={["avif", "webp"]} 
         widths={[320, 530, 960, imgLocal.width]}
         sizes={`(max-width: 390px) 320px,
                 (max-width: 576px) 530px,
                 (max-width: 992px) 960px,
                 (min-width: 1200px) ${imgLocal.width}px`}
+        fallbackFormat="jpeg"
+        width={1920}
+        height={500}  
         alt="newstitle" />
     </div>
 </section>
