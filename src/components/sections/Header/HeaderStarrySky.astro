@@ -48,49 +48,49 @@ const {titlePage, page} = Astro.props;
 
     /*Animation */
     .starry-sky__background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        width: 100vw;
-        height: 100%;
-        background: var(--color-black);
-        padding: 0;
-        margin: 0;
-
-        & li {
-            position: absolute;
-            z-index: 2;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            list-style: none;
-            background: url("./starry-sky-background.webp");
-            background-size: contain;
-            animation: snowing 20s linear infinite;
-
-            &:nth-child(1) {
-                animation-delay: 16s;
-            }
-
-            &:nth-child(2) {
-                animation-delay: 12s;
-            }
-
-            &:nth-child(3) {
-                animation-delay: 8s;
-            }
-
-            &:nth-child(4) {
-                animation-delay: 4s;
-            }
-
-            &:nth-child(5) {
-                animation-delay: 0s;
-            }
-        }
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100%;
+    background: var(--color-black);
+    padding: 0;
+    margin: 0;
     }
+
+    .starry-sky__background li {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    background: url("./starry-sky-background.webp");
+    background-size: contain;
+    animation: snowing 20s linear infinite;
+    }
+    .starry-sky__background li:nth-child(1) {
+    animation-delay: 16s;
+    }
+
+    .starry-sky__background li:nth-child(2) {
+    animation-delay: 12s;
+    }
+
+    .starry-sky__background li:nth-child(3) {
+    animation-delay: 8s;
+    }
+
+    .starry-sky__background li:nth-child(4) {
+    animation-delay: 4s;
+    }
+
+    .starry-sky__background li:nth-child(5) {
+    animation-delay: 0s;
+    }
+
 
     @keyframes snowing {
         0% {
